@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class roombooking {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         boolean[][] rooms = new boolean[3][4];
         int choice;
 
@@ -15,14 +15,14 @@ public class roombooking {
             System.out.println("3. Exit");
         
             System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+            choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
                     viewRooms(rooms);
                 break;
                 case 2:
-                    bookRoom(rooms, scanner);
+                    bookRoom(rooms, sc);
                 break;
                 case 3:
                     System.out.println("Thank you for using the Room Booking System!");
@@ -32,7 +32,7 @@ public class roombooking {
             }
         } while (choice !=3);
 
-        scanner.close();
+        sc.close();
     }
 
     public static void viewRooms(boolean[][] rooms) {
@@ -45,11 +45,11 @@ public class roombooking {
         }
 
     }
-    public static void bookRoom(boolean[][] rooms, Scanner scanner) {
+    public static void bookRoom(boolean[][] rooms, Scanner sc) {
         System.out.print("\nEnter floor number (1-3): ");
-        int floor = scanner.nextInt() - 1;
+        int floor = sc.nextInt() - 1;
         System.out.print("Enter room number (1-4): ");
-        int room = scanner.nextInt() - 1;
+        int room = sc.nextInt() - 1;
 
         if (floor >= 0 && floor < rooms.length && room >= 0 && room < rooms[floor].length) {
             if (!rooms[floor][room]) {
