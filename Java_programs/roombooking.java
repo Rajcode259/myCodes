@@ -4,33 +4,39 @@ public class roombooking {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean[][] rooms = new boolean[3][4];
-        int choice;
+        int choice = -1;
 
         System.out.println("Welcome to the Room Booking System!");
 
         do {
             System.out.println("\n----Menu:----");
-            System.out.println("1. View Room Availability");
-            System.out.println("2. Book a Room");
-            System.out.println("3. Exit");
-        
+            System.out.println("1. View Room Availability.");
+            System.out.println("2. Book a Room.");
+            System.out.println("3. Exit.");
+
             System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
+            String input = sc.nextLine();
+            try {
+                choice = Integer.parseInt(input.trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number (1-3).");
+                continue;
+            }
 
             switch (choice) {
                 case 1:
                     viewRooms(rooms);
-                break;
+                    break;
                 case 2:
                     bookRoom(rooms, sc);
-                break;
+                    break;
                 case 3:
                     System.out.println("Thank you for using the Room Booking System!");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        } while (choice !=3);
+        } while (choice != 3);
 
         sc.close();
     }
@@ -38,29 +44,38 @@ public class roombooking {
     public static void viewRooms(boolean[][] rooms) {
         System.out.println("\nRoom Availability:");
         for (int i = 0; i < rooms.length; i++) {
+            System.out.print("Floor " + (i + 1) + ": ");
             for (int j = 0; j < rooms[i].length; j++) {
-                System.out.print((rooms[i][j] ?"[Booked]" : "[Available]")+" ");
+                System.out.print((rooms[i][j] ? "[Booked]" : "[Available]") + " ");
             }
             System.out.println();
         }
-
     }
-    public static void bookRoom(boolean[][] rooms, Scanner sc) {
-        System.out.print("\nEnter floor number (1-3): ");
-        int floor = sc.nextInt() - 1;
-        System.out.print("Enter room number (1-4): ");
-        int room = sc.nextInt() - 1;
 
-        if (floor >= 0 && floor < rooms.length && room >= 0 && room < rooms[floor].length) {
-            if (!rooms[floor][room]) {
-                rooms[floor][room] = true;
-                System.out.println("\nRoom successfully booked!");
+    public static void bookRoom(boolean[][] rooms, Scanner sc) {
+        try {
+            System.out.print("\nEnter floor number (1-3): ");
+            String floorInput = sc.nextLine();
+            int floor = Integer.parseInt(floorInput.trim()) - 1;
+
+            System.out.print("Enter room number (1-4): ");
+            String roomInput = sc.nextLine();
+            int room = Integer.parseInt(roomInput.trim()) - 1;
+
+            if (floor >= 0 && floor < rooms.length && room >= 0 && room < rooms[floor].length) {
+                if (!rooms[floor][room]) {
+                    rooms[floor][room] = true;
+                    System.out.println("\nRoom successfully booked!");
+                } else {
+                    System.out.println("\nSorry! Room is already booked.");
+                }
             } else {
-                System.out.println(" \nSorry!..Room is already booked.");
+                System.out.println("Invalid floor or room number.");
             }
-        } else {
-            System.out.println("Invalid floor or room number.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter numeric values for floor and room.");
+        } catch (Exception e) {
+            System.out.println("An unexpected error occurred: " + e.getMessage());
         }
     }
-
 }
