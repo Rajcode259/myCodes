@@ -1,44 +1,44 @@
-n=int(input("Enter the no. of elements: "))
-csid=[]
-for i in range (n):
-    user_in=int(input("Enter customer id:"))
-    csid.append(user_in)
+n = int(input("Enter the number of elements :"))
+csid = []
+for i in range(n):
+	user_input = int(input("Enter customer id : "))
+	csid.append(user_input)
 print(csid)
-p=int(input("Enter the customer id to be searched:"))
 
-def lne_sr(csid,p):
-    for i in range (n):
-        if p==csid[i]:
-         a = print("Customer id is matched.")
-        return a
-    else: 
-        print("id not found.")
-        
-lne_sr(csid,p)
+p = int(input("Enter a customer id to be searched :"))
 
-def binarySearch(arr, targetVal):
-  left = 0
-  right = len(arr) - 1
+def lnr_sr(csid, p):
+	found = False
+	for id in csid:
+		if p == id:
+			print("Customer id is matched")
+			found = True
+			break
+	if not found:
+		print("id not found")
 
-  while left <= right:
-    mid = (left + right) // 2
+lnr_sr(csid, p)
 
-    if arr[mid] == targetVal:
-      return mid
+csid.sort()
+print("Sorted list:", csid)
 
-    if arr[mid] < targetVal:
-      left = mid + 1
-    else:
-      right = mid - 1
+def binary_search(csid, target):
+	low = 0
+	high = len(csid) - 1
+	while low <= high:
+		mid = (low + high) // 2
+		mid_value = csid[mid]
+		if mid_value == target:
+			return mid
+		elif mid_value < target:
+			low = mid + 1
+		else:
+			high = mid - 1
+	return -1
 
-  return -1
-
-mylist = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
-x = int(input("Enter the the target value: "))
-
-result = binarySearch(mylist, x)
-
+target = int(input("\nEnter the number to search for: "))
+result = binary_search(csid, target)
 if result != -1:
-  print("Found at index", result)
+	print(f"The number {target} is found at index {result}.")
 else:
-  print("Not found")
+	print(f"The number {target} is not found in the list.")

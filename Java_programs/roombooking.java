@@ -9,11 +9,11 @@ public class roombooking {
         System.out.println("Welcome to the Room Booking System!");
 
         do {
-            System.out.println("\nMenu:");
+            System.out.println("\n----Menu:----");
             System.out.println("1. View Room Availability");
             System.out.println("2. Book a Room");
             System.out.println("3. Exit");
-        ;
+        
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
