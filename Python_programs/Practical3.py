@@ -50,8 +50,7 @@ while True:
         display()
 
     elif choice==4:
-        print("Fuck you Bitch!!!")
-        # display()
+        display()
         
     elif choice==5:
         break
