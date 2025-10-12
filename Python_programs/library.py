@@ -22,7 +22,7 @@ print("Book with Highest No. of borrowings =", maximum, "(", records2[maximum], 
 print("Book with Lowest No. of borrowings =", minimum, "(", records2[minimum], ")")
 
 # Members who borrowed 0 books
-zero = list(records).count(0)
+zero = records.count(0)
 print("No. of members who borrowed 0 Books =", zero)
 
 # Most frequently borrowed book (mode)
