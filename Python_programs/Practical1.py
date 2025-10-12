@@ -2,7 +2,7 @@ records={
     "raju":3,
     "rana":2,
     "ashish":0,
-    "shubham":0,
+    "shubham":1,
     "anish":5
 }
 records2={
@@ -17,7 +17,7 @@ avg=sum(records.values())/len(records)
 print("Average No. of Books borrowed by All members =",avg)
 maximum=max(records2)
 print("Books with Highest No. of borrowings =",maximum)
-minimum=max(records2)
+minimum=min(records2)
 print("Books with Lowest No. of borrowings =",minimum)
 zero=list(records.values()).count(0)
 print("No. of members who borrowed 0 Books =",zero)

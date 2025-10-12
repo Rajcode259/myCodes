@@ -20,7 +20,7 @@ def lnr_sr(csid, p):
 lnr_sr(csid, p)
 
 csid.sort()
-print("Sorted list:", csid)
+print("\nSorted list:", csid)
 
 def binary_search(csid, target):
 	low = 0
@@ -37,7 +37,7 @@ def binary_search(csid, target):
 	return -1
 
 target = int(input("\nEnter the number to search for: "))
-result = binary_search(csid, target)
+result = binary_search(csid, target)	# where result and mid are index of target value
 if result != -1:
 	print(f"The number {target} is found at index {result}.")
 else:

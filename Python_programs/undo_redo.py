@@ -1,13 +1,13 @@
 undo_stack=[]
 redo_stack=[]
 def make_change():
-    text=input("Enter a string: ")
+    text = input("Enter a string: ")
     undo_stack.append(text)
     redo_stack.clear()
 
 def undo():
     if undo_stack:
-        x=undo_stack.pop()
+        x = undo_stack.pop()
     else:
         print("Nothing to Undo.\n")
         return
@@ -15,7 +15,7 @@ def undo():
 
 def redo():
     if redo_stack:
-        x=redo_stack.pop()
+        x = redo_stack.pop()
     else:
         print("Nothing to Redo.\n")
         return    
@@ -32,27 +32,27 @@ while True:
     print("4.Current State.")
     print("5.Exit.")
     
-    choice=int(input("Enter your choice: "))
+    choice = int(input("Enter your choice(1-5): "))
     print()
-    if choice==1:
+    if choice == 1:
         make_change()
         print()
         display()
 
-    elif choice==2:
+    elif choice == 2:
         undo()
         print()
         display()
 
-    elif choice==3:
+    elif choice == 3:
         redo()
         print()
         display()
 
-    elif choice==4:
+    elif choice == 4:
         display()
         
-    elif choice==5:
+    elif choice == 5:
         break
 
     else:
